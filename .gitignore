@@ -1,0 +1,69 @@
+# Credentials — .env holds live LiveKit, WhatsApp, OpenAI and MongoDB secrets
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+.vscode/
+.idea/
+*.log
+
+# runtime state
+.pending_alerts.json
+_dataset_upload/
+
+# Benchmark audio. 578MB of it, and it is AfriSwitch - a gated dataset that is
+# not ours to republish. The 16 clips the benchmark actually scored are
+# published with credit at huggingface.co/datasets/yusasif/intron-stt_tts-benchmark,
+# which is where the organisers asked for them. `benchmark.py --fetch-afriswitch`
+# refetches the rest.
+samples/
+
+# Synthesised audio from benchmark runs, and scratch files from probing the
+# TTS endpoints. Reproducible, and 22MB of it.
+tts_output/
+cs_*.wav
+gen_*.wav
+tts_live_*.wav
+yo_test.wav
+
+# Demo video and the narration audio. Hundreds of megabytes, and GitHub refuses
+# single files over 100MB anyway - the finished video belongs on YouTube, which
+# is where the submission form asks for it.
+*.mp4
+*.wav
+
+# Operational scripts, kept locally but out of the repo. None of them is part
+# of the agent, the code-switching or the benchmark, which is all a reader
+# needs to follow: they are one-off account setup and dataset publishing.
+push_dataset.py
+setup_twilio.py
+setup_livekit_number.py
+verify_number.py
+enable_calling.py
+grant_permission.py
+
+# The competition answers. Working notes for one submission form, not part of
+# the project, and nothing a reader of the code needs.
+SUBMISSION.md
+
+# Speech adapters written while comparing models, kept locally so the work is
+# not lost but out of the repo, because the agent does not run on any of them.
+# Naming them here would be the same as tracking them.
+local/
+
+# Working documents drafted in this folder. Not part of the project.
+*Idea_Canvas*
+*_CANVAS.md
+
+# Intron and Sahara related files
+*intron*
+*sahara*
+intron*
+sahara*

@@ -1,0 +1,36 @@
+# Secrets. The compose file injects the real .env at run time via env_file, so
+# it must never be copied into the image - an image layer is readable by anyone
+# who can pull it, and deleting the file in a later layer does not remove it.
+.env
+.env.*
+!.env.example
+
+.git/
+.gitignore
+.github/
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+.vscode/
+.idea/
+
+# Local-only work, benchmark audio and demo media. None of it is needed to run
+# the agents, and samples/ alone is over half a gigabyte.
+local/
+samples/
+tts_output/
+_dataset_upload/
+*.mp4
+*.wav
+*.log
+*.docx
+
+# Runtime state belongs in the volume, not in the image.
+.pending_alerts.json
+
+# Working notes for the submission form.
+SUBMISSION.md
