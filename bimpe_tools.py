@@ -713,6 +713,12 @@ def _place_call(
         or os.environ.get("BIMPEAI_DEMO_PHONE", "").strip()
         or customer.get("phoneNumber", "")
     ).strip()
+    
+    # Normalize Nigerian phone numbers: convert 080... to +2348...
+    if number and number.startswith("0") and len(number) == 11:
+        number = "+234" + number[1:]
+        logger.info("Normalized phone number from local format to E.164: %s", number)
+    
     if not number:
         return {"placed": False, "error": "no phone number for this customer"}
 
